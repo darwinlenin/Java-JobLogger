@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="365d06b2-0479-4fef-b0d6-be7e6414c034" name="Default Changelist" comment="" />
+    <list default="true" id="365d06b2-0479-4fef-b0d6-be7e6414c034" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ProyectoGroovy/ProyectoGroovy.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Test/BubbleSort.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/JobLoggerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/JobLoggerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JobLogger/JobLogger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JobLogger/JobLogger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/JobLogger/JobLoggerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/JobLogger/JobLoggerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JobLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JobLogger.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,12 +25,17 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1W2egYdNC6rLBtjuJWQdRdULR0p" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -46,12 +60,45 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.JobLoggerTest.testDBLogger">
     <configuration name="JobLoggerTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JobLogger" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="JobLoggerTest" />
       <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JobLoggerTest.testDBLogger" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JobLogger" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="JobLoggerTest" />
+      <option name="METHOD_NAME" value="testDBLogger" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JobLoggerTest.testFileLogger" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JobLogger" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="JobLoggerTest" />
+      <option name="METHOD_NAME" value="testFileLogger" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JobLoggerTest.testLogMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JobLogger" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="JobLoggerTest" />
+      <option name="METHOD_NAME" value="testLogMessage" />
       <option name="TEST_OBJECT" value="method" />
       <option name="PARAMETERS" value="" />
       <method v="2">
@@ -70,6 +117,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.JobLoggerTest.testDBLogger" />
+        <item itemvalue="JUnit.JobLoggerTest.testFileLogger" />
+        <item itemvalue="JUnit.JobLoggerTest.testLogMessage" />
         <item itemvalue="JUnit.JobLoggerTest.test1" />
       </list>
     </recent_temporary>
@@ -89,5 +139,16 @@
       <updated>1578352228746</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

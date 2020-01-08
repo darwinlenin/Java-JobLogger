@@ -1,6 +1,8 @@
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.util.Date;
@@ -38,38 +40,27 @@ public class JobLogger {
                 || (!message && !warning && !error))
             throw new Exception("Error or Warning or Message must be specified");
 
-        Properties connectionProps = new Properties();
-        connectionProps.put("user", _dbParams.get("userName"));
-        connectionProps.put("password", _dbParams.get("password"));
+        connectionDBLogger(message,warning,error);
+        fileLogger(messageText,message,warning,error);
+    }
 
-        int t;
-        Statement stmt;
-        try (Connection connection = DriverManager.getConnection("jdbc:" + _dbParams.get("dbms")
-                + "://" + _dbParams.get("serverName")
-                + ":" + _dbParams.get("portNumber") + "/", connectionProps)) {
-
-            t = 0;
-            if (message && _logMessage) {
-                t = 1;
-            }
-
-            if (error && _logError) {
-                t = 2;
-            }
-
-            if (warning && _logWarning) {
-                t = 3;
-            }
-
-            stmt = connection.createStatement();
-            if(_logToDatabase) stmt.executeUpdate("insert into Log_Values('" + message + "', " + String.valueOf(t) + ")");
-        }
-
+    public static void fileLogger(String messageText, boolean message, boolean warning, boolean error) throws Exception {
         String l = "", fileName ="/logFile.txt";
         File logFile = new File(_dbParams.get("logFileFolder") + fileName);
-        if (!logFile.exists()) logFile.createNewFile();
+        if (!logFile.exists()) {
+            try {
+                logFile.createNewFile();
+            } catch (IOException e) {
+                throw new Exception("Error creating new file: "+e);
+            }
+        }
 
-        FileHandler fh = new FileHandler(_dbParams.get("logFileFolder") + fileName);
+        FileHandler fh = null;
+        try {
+            fh = new FileHandler(_dbParams.get("logFileFolder") + fileName);
+        } catch (IOException e) {
+            throw new Exception("Error handling the file folder: "+e);
+        }
         ConsoleHandler ch = new ConsoleHandler();
 
         if (error && _logError)
@@ -90,6 +81,46 @@ public class JobLogger {
             _logger.addHandler(ch);
             _logger.log(Level.INFO, messageText);
         }
+    }
 
+    public static void connectionDBLogger(boolean message, boolean warning, boolean error) throws Exception {
+        Properties connectionProps = new Properties();
+        connectionProps.put("user", _dbParams.get("userName"));
+        connectionProps.put("password", _dbParams.get("password"));
+        int t;
+        Statement stmt = null;
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:" + _dbParams.get("dbms")
+                + "://" + _dbParams.get("serverName")
+                + ":" + _dbParams.get("portNumber") + "/", connectionProps);
+
+            t = 0;
+            if (message && _logMessage) t = 1;
+
+            if (error && _logError) t = 2;
+
+            if (warning && _logWarning) t = 3;
+
+            stmt = connection.createStatement();
+            if(_logToDatabase) stmt.executeUpdate("insert into Log_Values('" + message + "', " + String.valueOf(t) + ")");
+        } catch (SQLException sqle){
+            sqle.printStackTrace();
+            throw new Exception("SQLState: "
+                    + sqle.getSQLState()
+                    +" SQLErrorCode: "
+                    + sqle.getErrorCode());
+        } catch (Exception e){
+            throw new Exception("Error in database execution connection: "+e);
+        } finally {
+            if (connection != null) {
+                try{
+                    stmt.close();
+                    connection.close();
+                } catch(Exception e){
+                    throw new Exception("Error in database close connection: "+e);
+                }
+            }
+        }
     }
 }
